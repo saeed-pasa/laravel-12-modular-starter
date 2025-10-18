@@ -1,0 +1,7 @@
+{
+    "User": true,
+    "Product": true,
+    "Profile": true,
+    "Blog": true,
+    "Payment": true
+}
