@@ -1,7 +1,7 @@
 ### CONST
 @host = http://127.0.0.1:8000
 @api_base = {{host}}/api/v1
-@auth_token =
+@auth_token = eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL3YxL2F1dGgvbG9naW4iLCJpYXQiOjE3NjA5MDU0ODQsImV4cCI6MTc2MDkwOTA4NCwibmJmIjoxNzYwOTA1NDg0LCJqdGkiOiJwcmRBcE41NU85bkcwd1JDIiwic3ViIjoiMSIsInBydiI6ImJiNjVkOWI4ZmJmMGRhOTgyN2M4ZWQyMzFkOWM1NGM4MTdmMGZiYjIifQ.wtvzziFxU4M-B6559QnVYsZv94p1MQhd2zFMavte7yY
 
 ### Register user
 POST {{api_base}}/auth/register
