@@ -1,0 +1,41 @@
+### CONST
+@host = http://127.0.0.1:8000
+@api_base = {{host}}/api/v1
+@auth_token =
+
+### Register user
+POST {{api_base}}/auth/register
+Accept: application/json
+Content-Type: application/json
+
+{
+   "name": "Test User",
+   "email": "test@example.com",
+   "password": "password123",
+   "password_confirmation": "password123"
+}
+
+### Login user
+POST {{api_base}}/auth/login
+Accept: application/json
+Content-Type: application/json
+
+{
+   "email": "test@example.com",
+   "password": "password123"
+}
+
+### Get user info
+GET {{api_base}}/auth/me
+Accept: application/json
+Authorization: Bearer {{auth_token}}
+
+### Refresh token
+POST {{api_base}}/auth/refresh
+Accept: application/json
+Authorization: Bearer {{auth_token}}
+
+### Logout user
+POST {{api_base}}/auth/logout
+Accept: application/json
+Authorization: Bearer {{auth_token}}

@@ -2,7 +2,8 @@
 
 namespace Modules\User\Http\Controllers\V1;
 
-use App\Http\Controllers\Controller;
+use Exception;
+use Illuminate\Routing\Controller;
 use Illuminate\Http\JsonResponse;
 use Modules\User\Data\LoginData;
 use Modules\User\Data\RegisterData;
@@ -24,7 +25,7 @@ class AuthController extends Controller
          $tokenData = $this->authService->register($registerData);
 
          return response()->json($tokenData, 201);
-      } catch (\Exception $e) {
+      } catch (Exception $e) {
          return response()->json(['error' => $e->getMessage()], $e->getCode() ?: 400);
       }
    }
@@ -36,7 +37,7 @@ class AuthController extends Controller
          $tokenData = $this->authService->login($loginData);
 
          return response()->json($tokenData);
-      } catch (\Exception $e) {
+      } catch (Exception $e) {
          $statusCode = ($e->getCode() === 401) ? 401 : 400;
          return response()->json(['error' => $e->getMessage()], $statusCode);
       }
@@ -53,7 +54,7 @@ class AuthController extends Controller
       try {
          $tokenData = $this->authService->refresh();
          return response()->json($tokenData);
-      } catch (\Exception $e) {
+      } catch (Exception $e) {
          return response()->json(['error' => 'Could not refresh token'], 401);
       }
    }
