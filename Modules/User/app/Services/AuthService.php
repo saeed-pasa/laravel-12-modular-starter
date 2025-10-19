@@ -1,11 +1,11 @@
 <?php
 
-namespace Modules\User\app\Services;
+namespace Modules\User\Services;
 
 use Illuminate\Support\Facades\Auth;
-use Modules\User\app\Data\LoginData;
-use Modules\User\app\Data\RegisterData;
-use Modules\User\app\Repositories\Contracts\UserRepositoryInterface;
+use Modules\User\Data\LoginData;
+use Modules\User\Data\RegisterData;
+use Modules\User\Repositories\Contracts\UserRepositoryInterface;
 
 class AuthService
 {

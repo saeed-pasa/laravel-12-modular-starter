@@ -1,15 +1,15 @@
 <?php
 
-namespace Modules\User\app\Repositories\Eloquent;
+namespace Modules\User\Repositories\Eloquent;
 
-use App\Models\User;
+use Modules\User\Models\User;
 use Illuminate\Support\Facades\Hash;
-use Modules\User\app\Data\RegisterData;
-use Modules\User\app\Repositories\Contracts\UserRepositoryInterface;
+use Modules\User\Data\RegisterData;
+use Modules\User\Repositories\Contracts\UserRepositoryInterface;
 
 class EloquentUserRepository implements UserRepositoryInterface
 {
-   
+
    public function create(RegisterData $data): User
    {
       return User::create([

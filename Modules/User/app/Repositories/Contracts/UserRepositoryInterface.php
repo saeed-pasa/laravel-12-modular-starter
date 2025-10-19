@@ -1,9 +1,9 @@
 <?php
 
-namespace Modules\User\app\Repositories\Contracts;
+namespace Modules\User\Repositories\Contracts;
 
-use App\Models\User;
-use Modules\User\app\Data\RegisterData;
+use Modules\User\Models\User;
+use Modules\User\Data\RegisterData;
 
 interface UserRepositoryInterface
 {

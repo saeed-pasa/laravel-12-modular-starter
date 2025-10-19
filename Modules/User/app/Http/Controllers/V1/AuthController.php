@@ -1,14 +1,14 @@
 <?php
 
-namespace Modules\User\app\Http\Controllers\V1;
+namespace Modules\User\Http\Controllers\V1;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\JsonResponse;
-use Modules\User\app\Data\LoginData;
-use Modules\User\app\Data\RegisterData;
-use Modules\User\app\Http\Requests\V1\LoginRequest;
-use Modules\User\app\Http\Requests\V1\RegisterRequest;
-use Modules\User\app\Services\AuthService;
+use Modules\User\Data\LoginData;
+use Modules\User\Data\RegisterData;
+use Modules\User\Http\Requests\V1\LoginRequest;
+use Modules\User\Http\Requests\V1\RegisterRequest;
+use Modules\User\Services\AuthService;
 
 class AuthController extends Controller
 {

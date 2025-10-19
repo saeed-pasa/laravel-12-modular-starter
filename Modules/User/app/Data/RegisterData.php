@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\User\app\Data;
+namespace Modules\User\Data;
 
 use Spatie\LaravelData\Data;
 
@@ -10,6 +10,7 @@ class RegisterData extends Data
       public string $name,
       public string $email,
       public string $password,
-   ) {
+   )
+   {
    }
 }
