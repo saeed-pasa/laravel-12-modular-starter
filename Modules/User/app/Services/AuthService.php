@@ -2,6 +2,7 @@
 
 namespace Modules\User\Services;
 
+use Exception;
 use Illuminate\Support\Facades\Auth;
 use Modules\User\Data\LoginData;
 use Modules\User\Data\RegisterData;
@@ -16,7 +17,7 @@ class AuthService
    }
 
    /**
-    * @throws \Exception
+    * @throws Exception
     */
    public function register(RegisterData $data): array
    {
@@ -26,12 +27,12 @@ class AuthService
    }
 
    /**
-    * @throws \Exception
+    * @throws Exception
     */
    public function login(LoginData $data): array
    {
       if (!$token = Auth::guard('api')->attempt($data->toArray())) {
-         throw new \Exception('Unauthorized', 401);
+         throw new Exception('Unauthorized', 401);
       }
 
       return $this->respondWithToken($token);
