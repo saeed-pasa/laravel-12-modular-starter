@@ -2,7 +2,7 @@
 
 namespace Modules\User\Models;
 
-use Database\Factories\UserFactory;
+use Modules\User\Database\Factories\UserFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -12,6 +12,14 @@ class User extends Authenticatable implements JWTSubject
 {
    /** @use HasFactory<UserFactory> */
    use HasFactory, Notifiable;
+
+   /**
+    * Create a new factory instance for the model.
+    */
+   protected static function newFactory(): UserFactory
+   {
+      return UserFactory::new();
+   }
 
    /**
     * The attributes that are mass assignable.

@@ -3,6 +3,7 @@
 namespace Modules\User\Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Modules\User\Models\User;
 
 class UserDatabaseSeeder extends Seeder
 {
@@ -11,6 +12,10 @@ class UserDatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // $this->call([]);
+       // Create a test user
+       User::factory()->create([
+          'name' => 'Test User',
+          'email' => 'test@example.com',
+       ]);
     }
 }
