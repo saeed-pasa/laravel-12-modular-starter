@@ -17,31 +17,31 @@ class RolePermissionSeeder extends Seeder
        app()[PermissionRegistrar::class]->forgetCachedPermissions();
 
 
-       Permission::create(['name' => 'view products']);
-       Permission::create(['name' => 'create products']);
-       Permission::create(['name' => 'edit products']);
-       Permission::create(['name' => 'delete products']);
+       Permission::firstOrCreate(['name' => 'view products']);
+       Permission::firstOrCreate(['name' => 'create products']);
+       Permission::firstOrCreate(['name' => 'edit products']);
+       Permission::firstOrCreate(['name' => 'delete products']);
 
-       Permission::create(['name' => 'view users']);
-       Permission::create(['name' => 'create users']);
-       Permission::create(['name' => 'edit users']);
-       Permission::create(['name' => 'delete users']);
+       Permission::firstOrCreate(['name' => 'view users']);
+       Permission::firstOrCreate(['name' => 'create users']);
+       Permission::firstOrCreate(['name' => 'edit users']);
+       Permission::firstOrCreate(['name' => 'delete users']);
 
 
-       $userRole = Role::create(['name' => 'User']);
-       $userRole->givePermissionTo([
+       $userRole = Role::firstOrCreate(['name' => 'User']);
+       $userRole->syncPermissions([
           'view products',
        ]);
 
-       $contentManagerRole = Role::create(['name' => 'Content Manager']);
-       $contentManagerRole->givePermissionTo([
+       $contentManagerRole = Role::firstOrCreate(['name' => 'Content Manager']);
+       $contentManagerRole->syncPermissions([
           'view products',
           'create products',
           'edit products',
           'delete products',
        ]);
 
-       $superAdminRole = Role::create(['name' => 'SuperAdmin']);
-       $superAdminRole->givePermissionTo(Permission::all());
+       $superAdminRole = Role::firstOrCreate(['name' => 'SuperAdmin']);
+       $superAdminRole->syncPermissions(Permission::all());
     }
 }
