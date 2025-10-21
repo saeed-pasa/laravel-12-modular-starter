@@ -13,7 +13,16 @@ use Illuminate\Support\Facades\Auth;
  *     required={"name", "price"},
  *     @OA\Property(property="name", type="string", example="laptop"),
  *     @OA\Property(property="description", type="string", nullable=true, example="A high-quality laptop"),
- *     @OA\Property(property="price", type="integer", example=1500000)
+ *     @OA\Property(property="price", type="integer", example=1500000),
+ *     @OA\Property(
+ *         property="category_ids",
+ *         type="array",
+ *         description="Array of category IDs to associate with the product",
+ *         example={1, 2, 3},
+ *         @OA\Items(
+ *             type="integer"
+ *         )
+ *     )
  * )
  */
 class StoreProductRequest extends FormRequest
@@ -29,6 +38,8 @@ class StoreProductRequest extends FormRequest
          'name' => ['required', 'string', 'max:255'],
          'description' => ['nullable', 'string'],
          'price' => ['required', 'integer', 'min:0'],
+         'category_ids' => ['array'],
+         'category_ids.*' => ['integer', 'exists:categories,id'],
       ];
    }
 }

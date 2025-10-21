@@ -18,23 +18,36 @@ class EloquentProductRepository implements ProductRepositoryInterface
 
    public function all(): LengthAwarePaginator
    {
-      return $this->model->latest()->paginate(15);
+      return $this->model->with('categories')->latest()->paginate(15);
    }
 
    public function find(int $id): ?Product
    {
-      return $this->model->findOrFail($id);
+      return $this->model->with('categories')->findOrFail($id);
    }
 
    public function create(ProductData $data): Product
    {
-      return $this->model->create($data->toArray());
+      $product = $this->model->create($data->except('category_ids')->toArray());
+
+      if (isset($data->category_ids)) {
+         $product->categories()->sync($data->category_ids ?? []);
+      }
+
+      return $product->load('categories');
    }
 
    public function update(int $id, ProductData $data): bool
    {
       $product = $this->find($id);
-      return $product->update($data->toArray());
+
+      $updateResult = $product->update($data->except('category_ids')->toArray());
+
+      if (isset($data->category_ids)) {
+         $product->categories()->sync($data->category_ids ?? []);
+      }
+
+      return $updateResult;
    }
 
    public function delete(int $id): bool

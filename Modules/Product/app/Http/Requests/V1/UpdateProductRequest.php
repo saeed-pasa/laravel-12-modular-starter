@@ -12,7 +12,16 @@ use Illuminate\Support\Facades\Auth;
  *     description="Request schema for updating an existing product",
  *     @OA\Property(property="name", type="string", example="laptop"),
  *     @OA\Property(property="description", type="string", nullable=true, example="An updated high-quality laptop"),
- *     @OA\Property(property="price", type="integer", example=1400000)
+ *     @OA\Property(property="price", type="integer", example=1400000),
+ *     @OA\Property(
+ *         property="category_ids",
+ *         type="array",
+ *         description="Array of category IDs to associate with the product",
+ *         example={1, 2, 3},
+ *         @OA\Items(
+ *             type="integer"
+ *         )
+ *     )
  * )
  */
 class UpdateProductRequest extends FormRequest
@@ -28,6 +37,8 @@ class UpdateProductRequest extends FormRequest
          'name' => ['sometimes', 'required', 'string', 'max:255'],
          'description' => ['sometimes', 'nullable', 'string'],
          'price' => ['sometimes', 'required', 'integer', 'min:0'],
+         'category_ids' => ['array'],
+         'category_ids.*' => ['integer', 'exists:categories,id'],
       ];
    }
 }
