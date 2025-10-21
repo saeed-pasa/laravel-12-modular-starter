@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Modules\Category\Database\Seeders\CategoryDatabaseSeeder;
 use Modules\Product\Database\Seeders\ProductDatabaseSeeder;
 use Modules\User\Database\Seeders\UserDatabaseSeeder;
 
@@ -16,7 +17,8 @@ class DatabaseSeeder extends Seeder
       $this->call([
          RolePermissionSeeder::class,
          UserDatabaseSeeder::class,
-         ProductDatabaseSeeder::class
+         ProductDatabaseSeeder::class,
+         CategoryDatabaseSeeder::class,
       ]);
    }
 }
