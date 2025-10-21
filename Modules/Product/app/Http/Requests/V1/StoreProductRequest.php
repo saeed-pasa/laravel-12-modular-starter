@@ -5,6 +5,17 @@ namespace Modules\Product\Http\Requests\V1;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
 
+/**
+ * @OA\Schema(
+ *     schema="StoreProductRequest",
+ *     title="Store Product Request",
+ *     description="Request schema for storing a new product",
+ *     required={"name", "price"},
+ *     @OA\Property(property="name", type="string", example="laptop"),
+ *     @OA\Property(property="description", type="string", nullable=true, example="A high-quality laptop"),
+ *     @OA\Property(property="price", type="integer", example=1500000)
+ * )
+ */
 class StoreProductRequest extends FormRequest
 {
    public function authorize(): bool

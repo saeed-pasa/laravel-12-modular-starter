@@ -5,11 +5,29 @@ namespace Modules\Product\Http\Resources\V1;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
+/**
+ * @OA\Schema(
+ *     schema="ProductResource",
+ *     title="Product Resource",
+ *     description="Product resource representation",
+ *     @OA\Property(
+ *         property="data",
+ *         type="object",
+ *         @OA\Property(property="id", type="integer", example=1),
+ *         @OA\Property(property="name", type="string", example="laptop"),
+ *         @OA\Property(property="description", type="string", example="A high-quality laptop", nullable=true),
+ *         @OA\Property(property="price", type="integer", example=1500000),
+ *         @OA\Property(property="created_at", type="string", format="date-time", example="2025-10-20 14:30:00"),
+ *         @OA\Property(property="updated_at", type="string", format="date-time", example="2025-10-20 14:30:00")
+ *     )
+ * )
+ */
 class ProductResource extends JsonResource
 {
    public static $wrap = 'data';
 
    /**
+    * Transform the resource into an array.
     *
     * @return array<string, mixed>
     */

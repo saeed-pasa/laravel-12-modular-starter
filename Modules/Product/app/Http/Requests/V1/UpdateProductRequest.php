@@ -5,6 +5,16 @@ namespace Modules\Product\Http\Requests\V1;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
 
+/**
+ * @OA\Schema(
+ *     schema="UpdateProductRequest",
+ *     title="Update Product Request",
+ *     description="Request schema for updating an existing product",
+ *     @OA\Property(property="name", type="string", example="laptop"),
+ *     @OA\Property(property="description", type="string", nullable=true, example="An updated high-quality laptop"),
+ *     @OA\Property(property="price", type="integer", example=1400000)
+ * )
+ */
 class UpdateProductRequest extends FormRequest
 {
    public function authorize(): bool
