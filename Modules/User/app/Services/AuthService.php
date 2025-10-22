@@ -3,6 +3,7 @@
 namespace Modules\User\Services;
 
 use Exception;
+use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Facades\Auth;
 use Modules\User\Data\LoginData;
 use Modules\User\Data\RegisterData;
@@ -22,6 +23,9 @@ class AuthService
    public function register(RegisterData $data): array
    {
       $user = $this->userRepository->create($data);
+
+      event(new Registered($user));
+
       $token = Auth::guard('api')->login($user);
       return $this->respondWithToken($token);
    }
