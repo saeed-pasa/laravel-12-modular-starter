@@ -154,8 +154,10 @@ php artisan l5-swagger:generate
 
 http://127.0.0.1:8000/api/documentation
 
+<br>
 You can get an auth token from the `POST /api/v1/auth/login` endpoint and use the "Authorize" button to test all secured
 endpoints.
+
 ---
 
 ## Running Tests
